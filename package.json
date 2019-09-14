@@ -1,12 +1,12 @@
 {
   "name": "sketchpotify",
-  "description": "",
+  "description": "A silly hack to control Spotify from Sketch, because why not.",
   "version": "0.1.0",
   "engines": {
     "sketch": ">=49.0"
   },
   "skpm": {
-    "name": "sketchpotify",
+    "name": "Sketchpotify",
     "manifest": "src/manifest.json",
     "main": "sketchpotify.sketchplugin",
     "assets": [
