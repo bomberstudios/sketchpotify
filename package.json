@@ -26,6 +26,7 @@
   "author": "Ale M <bomberstudios@gmail.com>",
   "repository": "https://github.com/bomberstudios/sketchpotify.git",
   "dependencies": {
+    "@skpm/fs": "^0.2.5",
     "@skpm/xcodeproj-loader": "^0.1.6",
     "sketch-toolbar-item": "^0.1.3"
   }

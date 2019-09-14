@@ -23,6 +23,11 @@
       "script": "./shuffle.js"
     },
     {
+      "name": "Insert Current Artwork in Document",
+      "identifier": "sketchpotify.artwork",
+      "script": "./artwork.js"
+    },
+    {
       "name": "Toolbar",
       "script": "./sketchpotify.js",
       "handlers": {
@@ -38,7 +43,9 @@
       "sketchpotify.playpause",
       "sketchpotify.prev",
       "sketchpotify.next",
-      "sketchpotify.shuffle"
+      "sketchpotify.shuffle",
+      "-",
+      "sketchpotify.artwork"
     ]
   }
 }
