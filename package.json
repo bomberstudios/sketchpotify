@@ -23,5 +23,6 @@
   "devDependencies": {
     "@skpm/builder": "^0.7.0"
   },
-  "author": "Ale M <bomberstudios@gmail.com>"
+  "author": "Ale M <bomberstudios@gmail.com>",
+  "repository": "https://github.com/bomberstudios/sketchpotify.git"
 }
