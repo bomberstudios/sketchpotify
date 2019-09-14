@@ -1,3 +1,5 @@
+![](https://repository-images.githubusercontent.com/208445060/f283a480-d706-11e9-88c2-bdecad6fd3cd)
+
 # Sketchpotify
 
 A silly hack to control Spotify from Sketch, because why not.
