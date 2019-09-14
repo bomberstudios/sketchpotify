@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/BohemianCoding/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Play / Pause",
+      "identifier": "sketchpotify.playpause",
+      "script": "./playpause.js"
+    },
+    {
+      "name": "Previous Track",
+      "identifier": "sketchpotify.prev",
+      "script": "./previous.js"
+    },
+    {
+      "name": "Next Track",
+      "identifier": "sketchpotify.next",
+      "script": "./next.js"
+    },
+    {
+      "name": "Shuffle",
+      "identifier": "sketchpotify.shuffle",
+      "script": "./shuffle.js"
+    }
+  ],
+  "menu": {
+    "title": "Sketchpotify",
+    "items": [
+      "sketchpotify.playpause",
+      "sketchpotify.prev",
+      "sketchpotify.next",
+      "sketchpotify.shuffle"
+    ]
+  }
+}
