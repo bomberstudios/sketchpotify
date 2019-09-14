@@ -5,22 +5,26 @@
     {
       "name": "Play",
       "identifier": "sketchpotify.playpause",
-      "script": "./playpause.js"
+      "handler": "onPlayPause",
+      "script": "./sketchpotify.js"
     },
     {
       "name": "Prev",
       "identifier": "sketchpotify.prev",
-      "script": "./previous.js"
+      "handler": "onPrevious",
+      "script": "./sketchpotify.js"
     },
     {
       "name": "Next",
       "identifier": "sketchpotify.next",
-      "script": "./next.js"
+      "handler": "onNext",
+      "script": "./sketchpotify.js"
     },
     {
       "name": "Shuffle",
       "identifier": "sketchpotify.shuffle",
-      "script": "./shuffle.js"
+      "handler": "onShuffle",
+      "script": "./sketchpotify.js"
     },
     {
       "name": "Insert Current Artwork in Document",
