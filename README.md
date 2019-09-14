@@ -14,6 +14,10 @@ I have added a set of toolbar icons (thanks @abynim for makind this ridiculously
 
 ![sketch-toolbar-custom](https://user-images.githubusercontent.com/3832/64909673-adb03b80-d70f-11e9-9fea-677b0b82918e.gif)
 
+## Bonus Feature: Insert Current Track data in Document
+
+We all know life's too short to spend it looking for random text or images for your designs. So you can insert the current track's Artwork, Artist, Album or Track Name as layers in your document (or all at once!).
+
 ## Installation
 
 - [Download](../../releases/latest/download/sketchpotify.sketchplugin.zip) the latest release of the plugin
