@@ -4,12 +4,12 @@ const util = require('util')
 const fs = require('@skpm/fs')
 
 import sketch from 'sketch'
+import doAppleScript from './applescript'
+
 const FOLDER = path.join(os.tmpdir(), 'com.bomberstudios.sketchpotify')
 
 export default function(context) {
-  let appleScriptString = 'tell application "Spotify"\nset theURL to artwork url of current track\nend tell'
-  let as = NSAppleScript.alloc().initWithSource(appleScriptString)
-  let artworkURL = as.executeAndReturnError(nil).stringValue()
+  let artworkURL = doAppleScript('set theURL to artwork url of current track')
   // For some reason, Spotify returns non-secure URLs and those won't work in Sketch. Let's fix that:
   artworkURL = artworkURL.replace('http:','https:')
 

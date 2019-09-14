@@ -1,5 +1,6 @@
 import sketch, { UI } from 'sketch'
 import SketchToolbar from 'sketch-toolbar-item'
+import doAppleScript from './applescript'
 
 export function registerToolbarActions(context) {
   let prev = SketchToolbar.specifierForToolbarAction(context, 'sketchpotify.prev', 'prev.png|prev-dark.png')
@@ -21,8 +22,3 @@ export function onShuffle () {
   doAppleScript('set shuffling to true\nplaypause')
 }
 
-function doAppleScript(script) {
-  let appleScriptString = `tell application "Spotify"\n${script}\nend tell`
-  let as = NSAppleScript.alloc().initWithSource(appleScriptString)
-  as.executeAndReturnError(nil)
-}
