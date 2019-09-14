@@ -3,17 +3,17 @@
   "icon": "icon.png",
   "commands": [
     {
-      "name": "Play / Pause",
+      "name": "Play",
       "identifier": "sketchpotify.playpause",
       "script": "./playpause.js"
     },
     {
-      "name": "Previous Track",
+      "name": "Prev",
       "identifier": "sketchpotify.prev",
       "script": "./previous.js"
     },
     {
-      "name": "Next Track",
+      "name": "Next",
       "identifier": "sketchpotify.next",
       "script": "./next.js"
     },
@@ -21,6 +21,15 @@
       "name": "Shuffle",
       "identifier": "sketchpotify.shuffle",
       "script": "./shuffle.js"
+    },
+    {
+      "name": "Toolbar",
+      "script": "./sketchpotify.js",
+      "handlers": {
+        "actions": {
+          "Startup": "registerToolbarActions"
+        }
+      }
     }
   ],
   "menu": {

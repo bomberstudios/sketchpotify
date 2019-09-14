@@ -24,5 +24,9 @@
     "@skpm/builder": "^0.7.0"
   },
   "author": "Ale M <bomberstudios@gmail.com>",
-  "repository": "https://github.com/bomberstudios/sketchpotify.git"
+  "repository": "https://github.com/bomberstudios/sketchpotify.git",
+  "dependencies": {
+    "@skpm/xcodeproj-loader": "^0.1.6",
+    "sketch-toolbar-item": "^0.1.3"
+  }
 }
