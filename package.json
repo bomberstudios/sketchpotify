@@ -1,7 +1,7 @@
 {
   "name": "sketchpotify",
   "description": "A silly hack to control Spotify from Sketch, because why not.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "engines": {
     "sketch": ">=49.0"
   },
