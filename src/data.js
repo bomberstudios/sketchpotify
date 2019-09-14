@@ -8,7 +8,7 @@ import doAppleScript from './applescript'
 
 const FOLDER = path.join(os.tmpdir(), 'com.bomberstudios.sketchpotify')
 
-export default function(context) {
+export function getArtwork(context) {
   let artworkURL = doAppleScript('set theURL to artwork url of current track')
   // For some reason, Spotify returns non-secure URLs and those won't work in Sketch. Let's fix that:
   artworkURL = artworkURL.replace('http:','https:')
@@ -17,11 +17,50 @@ export default function(context) {
   // Artist name: 'tell application "Spotify"\nset theArtist to artist of current track\nend tell'
   // Track name: 'tell application "Spotify"\nset theTrack to name of current track\nend tell'
 
-  insertImageLayerFromURL(artworkURL, sketch.getSelectedDocument().selectedPage)
+  insertImageLayerFromURL(artworkURL)
 }
 
+export function getArtist(context) {
+  let data = doAppleScript('set theArtist to artist of current track')
+  console.log(data)
+  if (data != '') {
+    return insertTextLayer(data)
+  }
+}
+export function getAlbum(context) {
+  let data = doAppleScript('set theAlbum to album of current track')
+  if (data != '') {
+    return insertTextLayer(data)
+  }
+}
+export function getTrack(context) {
+  let data = doAppleScript('set theTrack to name of current track')
+  if (data != '') {
+    return insertTextLayer(data)
+  }
+}
+export function getEverything(context) {
+  let artwork = getArtwork()
+  let artist = getArtist()
+  artist.frame.x += 340
+  let album = getAlbum()
+  album.frame.x += 340
+  album.frame.y += 20
+  let track = getTrack()
+  track.frame.x += 340
+  track.frame.y += 40
+}
 
-function insertImageLayerFromURL(url, parent) {
+function insertTextLayer(txt) {
+  let parent = sketch.getSelectedDocument().selectedPage
+  return new sketch.Text({
+    text: txt,
+    parent: parent
+  })
+}
+
+function insertImageLayerFromURL(url) {
+  let parent = sketch.getSelectedDocument().selectedPage
   getImageFromURL(url).then(imagePath => {
     if (!imagePath) {
       // TODO: something wrong happened, show something to the user
@@ -37,6 +76,7 @@ function insertImageLayerFromURL(url, parent) {
       })
       // TODO: Use current viewport, instead of centering on layer
       sketch.getSelectedDocument().centerOnLayer(bitmap)
+      return bitmap
     }
   })
 }

@@ -29,7 +29,32 @@
     {
       "name": "Insert Current Artwork in Document",
       "identifier": "sketchpotify.artwork",
-      "script": "./artwork.js"
+      "handler": "getArtwork",
+      "script": "./data.js"
+    },
+    {
+      "name": "Insert Current Artist as Text",
+      "identifier": "sketchpotify.artist",
+      "handler": "getArtist",
+      "script": "./data.js"
+    },
+    {
+      "name": "Insert Current Album as Text",
+      "identifier": "sketchpotify.album",
+      "handler": "getAlbum",
+      "script": "./data.js"
+    },
+    {
+      "name": "Insert Current Track as Text",
+      "identifier": "sketchpotify.track",
+      "handler": "getTrack",
+      "script": "./data.js"
+    },
+    {
+      "name": "Insert All Data",
+      "identifier": "sketchpotify.everything",
+      "handler": "getEverything",
+      "script": "./data.js"
     },
     {
       "name": "Toolbar",
@@ -49,7 +74,11 @@
       "sketchpotify.next",
       "sketchpotify.shuffle",
       "-",
-      "sketchpotify.artwork"
+      "sketchpotify.artwork",
+      "sketchpotify.artist",
+      "sketchpotify.album",
+      "sketchpotify.track",
+      "sketchpotify.everything"
     ]
   }
 }
