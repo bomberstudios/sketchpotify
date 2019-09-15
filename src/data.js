@@ -13,42 +13,58 @@ export function getArtwork(context) {
   // For some reason, Spotify returns non-secure URLs and those won't work in Sketch. Let's fix that:
   artworkURL = artworkURL.replace('http:','https:')
 
-  // We'll need these soon
-  // Artist name: 'tell application "Spotify"\nset theArtist to artist of current track\nend tell'
-  // Track name: 'tell application "Spotify"\nset theTrack to name of current track\nend tell'
-
-  insertImageLayerFromURL(artworkURL)
+  return Promise.resolve(insertImageLayerFromURL(artworkURL))
 }
 
 export function getArtist(context) {
   let data = doAppleScript('set theArtist to artist of current track')
-  console.log(data)
   if (data != '') {
-    return insertTextLayer(data)
+    return new Promise.resolve(insertTextLayer(data))
   }
 }
 export function getAlbum(context) {
   let data = doAppleScript('set theAlbum to album of current track')
   if (data != '') {
-    return insertTextLayer(data)
+    return new Promise.resolve(insertTextLayer(data))
   }
 }
 export function getTrack(context) {
   let data = doAppleScript('set theTrack to name of current track')
   if (data != '') {
-    return insertTextLayer(data)
+    return new Promise.resolve(insertTextLayer(data))
   }
 }
 export function getEverything(context) {
-  let artwork = getArtwork()
-  let artist = getArtist()
-  artist.frame.x += 340
-  let album = getAlbum()
-  album.frame.x += 340
-  album.frame.y += 20
-  let track = getTrack()
-  track.frame.x += 340
-  track.frame.y += 40
+  sketch.getSelectedDocument().selectedLayers.clear()
+
+  let group = new sketch.Group({
+    parent: sketch.getSelectedDocument().selectedPage
+  })
+  group.selected = true
+
+  getArtwork().then(artwork => {
+    artwork.parent = group
+    group.adjustToFit()
+  })
+
+  getArtist().then(artist => {
+    group.name = artist.name
+    artist.parent = group
+    artist.frame.x += 340
+  })
+
+  getAlbum().then(album => {
+    group.name += ` - ${album.name}`
+    album.parent = group
+    album.frame.x += 340
+    album.frame.y += 20
+  })
+
+  getTrack().then(track => {
+    track.parent = group
+    track.frame.x += 340
+    track.frame.y += 40
+  })
 }
 
 function insertTextLayer(txt) {
@@ -61,7 +77,7 @@ function insertTextLayer(txt) {
 
 function insertImageLayerFromURL(url) {
   let parent = sketch.getSelectedDocument().selectedPage
-  getImageFromURL(url).then(imagePath => {
+  return Promise.resolve(getImageFromURL(url).then(imagePath => {
     if (!imagePath) {
       // TODO: something wrong happened, show something to the user
       return
@@ -75,10 +91,9 @@ function insertImageLayerFromURL(url) {
         parent: parent
       })
       // TODO: Use current viewport, instead of centering on layer
-      sketch.getSelectedDocument().centerOnLayer(bitmap)
       return bitmap
     }
-  })
+  }))
 }
 
 function getImageFromURL (url) {
