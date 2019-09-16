@@ -1,19 +1,13 @@
-const path = require('path')
-const os = require('os')
-const util = require('util')
-const fs = require('@skpm/fs')
-
 import sketch from 'sketch'
 import doAppleScript from './applescript'
-
-const FOLDER = path.join(os.tmpdir(), 'com.bomberstudios.sketchpotify')
+import insertImage, { getImageFromURL } from 'sketch-image-downloader'
 
 export function getArtwork(context) {
   let artworkURL = doAppleScript('set theURL to artwork url of current track')
   // For some reason, Spotify returns non-secure URLs and those won't work in Sketch. Let's fix that:
   artworkURL = artworkURL.replace('http:','https:')
 
-  return Promise.resolve(insertImageLayerFromURL(artworkURL))
+  return insertImage(artworkURL, sketch.getSelectedDocument().selectedPage)
 }
 
 export function getArtist(context) {
@@ -68,58 +62,8 @@ export function getEverything(context) {
 }
 
 function insertTextLayer(txt) {
-  let parent = sketch.getSelectedDocument().selectedPage
   return new sketch.Text({
     text: txt,
-    parent: parent
+    parent: sketch.getSelectedDocument().selectedPage
   })
-}
-
-function insertImageLayerFromURL(url) {
-  let parent = sketch.getSelectedDocument().selectedPage
-  return Promise.resolve(getImageFromURL(url).then(imagePath => {
-    if (!imagePath) {
-      // TODO: something wrong happened, show something to the user
-      return
-    } else {
-      let bitmap = new sketch.Image({
-        image: imagePath,
-        frame: {
-          width: 320,
-          height: 320
-        },
-        parent: parent
-      })
-      // TODO: Use current viewport, instead of centering on layer
-      return bitmap
-    }
-  }))
-}
-
-function getImageFromURL (url) {
-  // TODO: cache file
-  return fetch(url)
-    .then(res => res.blob())
-    .then(saveTempFileFromImageData)
-    .catch((err) => {
-      console.error(err)
-    })
-}
-
-function saveTempFileFromImageData (imageData) {
-  const guid = NSProcessInfo.processInfo().globallyUniqueString()
-  const imagePath = path.join(FOLDER, `${guid}.jpg`)
-  try {
-    fs.mkdirSync(FOLDER)
-  } catch (err) {
-    // probably because the folder already exists
-    // TODO: check that it is really because it already exists
-  }
-  try {
-    fs.writeFileSync(imagePath, imageData, 'NSData')
-    return imagePath
-  } catch (err) {
-    console.error(err)
-    return undefined
-  }
 }
