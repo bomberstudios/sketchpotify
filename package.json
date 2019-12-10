@@ -1,6 +1,7 @@
 {
   "name": "sketchpotify",
   "description": "A silly hack to control Spotify from Sketch, because why not.",
+  "license": "MIT",
   "version": "0.4.0",
   "engines": {
     "sketch": ">=49.0"
@@ -21,7 +22,8 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.7.0"
+    "@skpm/builder": "^0.7.0",
+    "serialize-javascript": ">=2.1.1"
   },
   "author": "Ale M <bomberstudios@gmail.com>",
   "repository": "https://github.com/bomberstudios/sketchpotify.git",
