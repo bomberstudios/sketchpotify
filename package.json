@@ -29,7 +29,7 @@
   "repository": "https://github.com/bomberstudios/sketchpotify.git",
   "dependencies": {
     "@skpm/fs": "^0.2.5",
-    "@skpm/xcodeproj-loader": "^0.1.8",
+    "@skpm/xcodeproj-loader": "^0.1.6",
     "sketch-image-downloader": "^1.0.1",
     "sketch-toolbar-item": "^0.1.4"
   }
