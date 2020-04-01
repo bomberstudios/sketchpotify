@@ -22,15 +22,15 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.7.0",
-    "serialize-javascript": ">=2.1.1"
+    "@skpm/builder": "^0.7.5",
+    "serialize-javascript": "^3.0.0"
   },
   "author": "Ale M <bomberstudios@gmail.com>",
   "repository": "https://github.com/bomberstudios/sketchpotify.git",
   "dependencies": {
     "@skpm/fs": "^0.2.5",
-    "@skpm/xcodeproj-loader": "^0.1.6",
+    "@skpm/xcodeproj-loader": "^0.1.8",
     "sketch-image-downloader": "^1.0.1",
-    "sketch-toolbar-item": "^0.1.3"
+    "sketch-toolbar-item": "^0.1.4"
   }
 }
