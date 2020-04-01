@@ -2,7 +2,7 @@
   "name": "sketchpotify",
   "description": "A silly hack to control Spotify from Sketch, because why not.",
   "license": "MIT",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "engines": {
     "sketch": ">=49.0"
   },
